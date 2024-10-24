@@ -1,0 +1,92 @@
+\relax 
+\citation{VANGEET200025,cnudde20123d,warlo2021multi}
+\Newlabel{inst1}{a}
+\Newlabel{inst2}{b}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{}\protected@file@percent }
+\newlabel{sec:introduction}{{1}{1}}
+\newlabel{sec:introduction@cref}{{[section][1][]1}{[1][1][]1}}
+\citation{demelo2022nextgeneration}
+\citation{coumans2021pybullet}
+\citation{nvidia2024nvidia}
+\citation{unity2024unity}
+\citation{unreal2024epic}
+\citation{muller2018sim4cv}
+\citation{demelo2022nextgeneration}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Background}{2}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Particle Pack Synthesis Workflow}}{3}{}\protected@file@percent }
+\newlabel{fig:workflow}{{1}{3}}
+\newlabel{fig:workflow@cref}{{[figure][1][]1}{[1][3][]3}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Method}{3}{}\protected@file@percent }
+\newlabel{sec:method}{{3}{3}}
+\newlabel{sec:method@cref}{{[section][3][]3}{[1][3][]3}}
+\citation{lorensen1987marching}
+\citation{garland1997surface}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces 2D Illustration of Particle Extraction Process}}{4}{}\protected@file@percent }
+\newlabel{fig:extract_particles}{{2}{4}}
+\newlabel{fig:extract_particles@cref}{{[figure][2][]2}{[1][4][]4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Particle Extraction}{4}{}\protected@file@percent }
+\newlabel{sec:method:subsec:particle_extraction}{{3.1}{4}}
+\newlabel{sec:method:subsec:particle_extraction@cref}{{[subsection][1][3]3.1}{[1][4][]4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Volume to Mesh}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Batched Rigid Body Simulation}{5}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Pipeline of Batched Rigid Body Simulation}}{5}{}\protected@file@percent }
+\newlabel{fig:batched_rigid_body_simulation_pipeline}{{3}{5}}
+\newlabel{fig:batched_rigid_body_simulation_pipeline@cref}{{[figure][3][]3}{[1][5][]5}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.1}Choice of Simulation}{6}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.2}Choice of Simulator}{6}{}\protected@file@percent }
+\citation{blender2023objectops}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.3}Implementation Detail}{7}{}\protected@file@percent }
+\newlabel{subsubsec:syn:simu:imp_detail}{{3.3.3}{7}}
+\newlabel{subsubsec:syn:simu:imp_detail@cref}{{[subsubsection][3][3,3]3.3.3}{[1][7][]7}}
+\newlabel{eqn:mass}{{1}{7}}
+\newlabel{eqn:mass@cref}{{[equation][1][]1}{[1][7][]7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Simulation Reconstruction}{8}{}\protected@file@percent }
+\newlabel{eqn:syn:rx}{{2}{9}}
+\newlabel{eqn:syn:rx@cref}{{[equation][2][]2}{[1][8][]9}}
+\newlabel{eqn:syn:ry}{{3}{9}}
+\newlabel{eqn:syn:ry@cref}{{[equation][3][]3}{[1][8][]9}}
+\newlabel{eqn:syn:rz}{{4}{9}}
+\newlabel{eqn:syn:rz@cref}{{[equation][4][]4}{[1][8][]9}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Post-processing}{10}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces An Example of Postprocessing Slice in Simulated Particle Pack Data}}{10}{}\protected@file@percent }
+\newlabel{fig:syn:postprocess}{{4}{10}}
+\newlabel{fig:syn:postprocess@cref}{{[figure][4][]4}{[1][10][]10}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Experiment \& Discussions}{10}{}\protected@file@percent }
+\citation{jocher2023yolo}
+\citation{Dice1945MeasuresOT}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Experiment Setup}{11}{}\protected@file@percent }
+\newlabel{eqn:dice}{{12}{11}}
+\newlabel{eqn:dice@cref}{{[equation][12][]12}{[1][11][]11}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Result I: Synthetic Data Improves Segmentation Accuracy}{11}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Testing results for different tomogram datasets. Each row represents the training set and each column represents the testing set. Real Large refers to a real tomogram dataset with large particles, while Real Small refers to a real tomogram dataset with small particles. Rows include results from training on only the real datasets and combinations with synthetic data (Real Large + Syn, Real Small + Syn). Columns indicate testing on real datasets with large or small particles.}}{12}{}\protected@file@percent }
+\newlabel{tab:res1}{{1}{12}}
+\newlabel{tab:res1@cref}{{[table][1][]1}{[1][11][]12}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Result II: Postprocessing Is Crucial In Augmentation}{12}{}\protected@file@percent }
+\citation{sederberg1986free}
+\citation{ho2020denoising}
+\citation{goodfellow2014generativea}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Testing results for real tomogram datasets with large and small particles using different training sets, with and without postprocessing. Each row indicates a different training configuration: Real Large + Syn or Real Small + Syn, combined with postprocessing (w/) or without postprocessing (w/o). Columns show testing results on real datasets: Real Large and Real Small. Performance varies depending on the use of postprocessing and particle size of the testing set.}}{13}{}\protected@file@percent }
+\newlabel{tab:res2}{{2}{13}}
+\newlabel{tab:res2@cref}{{[table][2][]2}{[1][12][]13}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Conclusion}{13}{}\protected@file@percent }
+\bibstyle{elsarticle-num}
+\bibdata{cas-refs}
+\bibcite{VANGEET200025}{{1}{}{{}}{{}}}
+\bibcite{cnudde20123d}{{2}{}{{}}{{}}}
+\bibcite{warlo2021multi}{{3}{}{{}}{{}}}
+\bibcite{demelo2022nextgeneration}{{4}{}{{}}{{}}}
+\bibcite{coumans2021pybullet}{{5}{}{{}}{{}}}
+\bibcite{nvidia2024nvidia}{{6}{}{{}}{{}}}
+\bibcite{unity2024unity}{{7}{}{{}}{{}}}
+\bibcite{unreal2024epic}{{8}{}{{}}{{}}}
+\bibcite{muller2018sim4cv}{{9}{}{{}}{{}}}
+\bibcite{lorensen1987marching}{{10}{}{{}}{{}}}
+\bibcite{garland1997surface}{{11}{}{{}}{{}}}
+\bibcite{blender2023objectops}{{12}{}{{}}{{}}}
+\bibcite{jocher2023yolo}{{13}{}{{}}{{}}}
+\bibcite{Dice1945MeasuresOT}{{14}{}{{}}{{}}}
+\bibcite{sederberg1986free}{{15}{}{{}}{{}}}
+\bibcite{ho2020denoising}{{16}{}{{}}{{}}}
+\bibcite{goodfellow2014generativea}{{17}{}{{}}{{}}}
+\providecommand\NAT@force@numbers{}\NAT@force@numbers
+\gdef \@abspage@last{17}
