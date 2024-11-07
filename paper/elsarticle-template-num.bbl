@@ -6,9 +6,8 @@
   \def\href#1#2{#2} \def\path#1{#1}\fi
 
 \bibitem{VANGEET200025}
-M.~{Van Geet}, R.~Swennen, M.~Wevers, \href{https://www.sciencedirect.com/science/article/pii/S003707389900127X}{Quantitative analysis of reservoir rocks by microfocus x-ray computerised tomography}, Sedimentary Geology 132~(1) (2000) 25--36.
+M.~{Van Geet}, R.~Swennen, M.~Wevers, Quantitative analysis of reservoir rocks by microfocus x-ray computerised tomography, Sedimentary Geology 132~(1) (2000) 25--36.
 \newblock \href {https://doi.org/https://doi.org/10.1016/S0037-0738(99)00127-X} {\path{doi:https://doi.org/10.1016/S0037-0738(99)00127-X}}.
-\newline\urlprefix\url{https://www.sciencedirect.com/science/article/pii/S003707389900127X}
 
 \bibitem{cnudde20123d}
 V.~Cnudde, J.~Dewanckele, W.~De~Boever, L.~Brabant, T.~De~Kock, 3d characterization of grain size distributions in sandstone by means of x-ray computed tomography, in: Quantitative mineralogy and microanalysis of sediments and sedimentary rocks, Vol.~42, Mineralogical Association of Canada (MAC), 2012, pp. 99--113.
@@ -16,6 +15,11 @@ V.~Cnudde, J.~Dewanckele, W.~De~Boever, L.~Brabant, T.~De~Kock, 3d characterizat
 \bibitem{warlo2021multi}
 M.~Warlo, G.~Bark, C.~Wanhainen, A.~Butcher, F.~Forsberg, H.~Lycksam, J.~Kuva, Multi-scale x-ray computed tomography analysis to aid automated mineralogy in ore geology research, Frontiers in Earth Science 9 (2021) 789372.
 \newblock \href {https://doi.org/10.3389/feart.2021.789372} {\path{doi:10.3389/feart.2021.789372}}.
+
+\bibitem{richter2016playingdatagroundtruth}
+S.~R. Richter, V.~Vineet, S.~Roth, V.~Koltun, \href{https://arxiv.org/abs/1608.02192}{Playing for data: Ground truth from computer games} (2016).
+\newblock \href {http://arxiv.org/abs/1608.02192} {\path{arXiv:1608.02192}}.
+\newline\urlprefix\url{https://arxiv.org/abs/1608.02192}
 
 \bibitem{demelo2022nextgeneration}
 C.~M. De~Melo, A.~Torralba, L.~Guibas, J.~DiCarlo, R.~Chellappa, J.~Hodgins, Next-generation deep learning based on simulators and synthetic data, Trends in Cognitive Sciences 26~(2) (2022) 174--187.
@@ -27,15 +31,26 @@ E.~Coumans, Y.~Bai, {PyBullet}, a {Python} module for physics simulation for gam
 \bibitem{nvidia2024nvidia}
 {NVIDIA Corporation}, {NVIDIA} {PhysX}, \url{https://developer.nvidia.com/physx-sdk} (2024).
 
+\bibitem{greff2022kubricscalabledatasetgenerator}
+K.~Greff, F.~Belletti, L.~Beyer, C.~Doersch, Y.~Du, D.~Duckworth, D.~J. Fleet, D.~Gnanapragasam, F.~Golemo, C.~Herrmann, T.~Kipf, A.~Kundu, D.~Lagun, I.~Laradji, Hsueh-Ti, Liu, H.~Meyer, Y.~Miao, D.~Nowrouzezahrai, C.~Oztireli, E.~Pot, N.~Radwan, D.~Rebain, S.~Sabour, M.~S.~M. Sajjadi, M.~Sela, V.~Sitzmann, A.~Stone, D.~Sun, S.~Vora, Z.~Wang, T.~Wu, K.~M. Yi, F.~Zhong, A.~Tagliasacchi, \href{https://arxiv.org/abs/2203.03570}{Kubric: A scalable dataset generator} (2022).
+\newblock \href {http://arxiv.org/abs/2203.03570} {\path{arXiv:2203.03570}}.
+\newline\urlprefix\url{https://arxiv.org/abs/2203.03570}
+
 \bibitem{unity2024unity}
 {Unity Technologies}, {Unity} {Game} {Engine}, \url{https://unity.com} (2024).
 
 \bibitem{unreal2024epic}
 {Epic Games}, {Unreal} {Engine}, \url{https://www.unrealengine.com} (2024).
 
-\bibitem{muller2018sim4cv}
-M.~M{\"u}ller, V.~Casser, J.~Lahoud, N.~Smith, B.~Ghanem, {{Sim4CV}}: {{A Photo-Realistic Simulator}} for {{Computer Vision Applications}}, International Journal of Computer Vision 126~(9) (2018) 902--919.
-\newblock \href {http://arxiv.org/abs/1708.05869} {\path{arXiv:1708.05869}}, \href {https://doi.org/10.1007/s11263-018-1073-7} {\path{doi:10.1007/s11263-018-1073-7}}.
+\bibitem{LEE2023105060}
+H.~Lee, J.~Jeon, D.~Lee, C.~Park, J.~Kim, D.~Lee, \href{https://www.sciencedirect.com/science/article/pii/S0926580523003205}{Game engine-driven synthetic data generation for computer vision-based safety monitoring of construction workers}, Automation in Construction 155 (2023) 105060.
+\newblock \href {https://doi.org/https://doi.org/10.1016/j.autcon.2023.105060} {\path{doi:https://doi.org/10.1016/j.autcon.2023.105060}}.
+\newline\urlprefix\url{https://www.sciencedirect.com/science/article/pii/S0926580523003205}
+
+\bibitem{borkman2021unityperceptiongeneratesynthetic}
+S.~Borkman, A.~Crespi, S.~Dhakad, S.~Ganguly, J.~Hogins, Y.-C. Jhang, M.~Kamalzadeh, B.~Li, S.~Leal, P.~Parisi, C.~Romero, W.~Smith, A.~Thaman, S.~Warren, N.~Yadav, \href{https://arxiv.org/abs/2107.04259}{Unity perception: Generate synthetic data for computer vision} (2021).
+\newblock \href {http://arxiv.org/abs/2107.04259} {\path{arXiv:2107.04259}}.
+\newline\urlprefix\url{https://arxiv.org/abs/2107.04259}
 
 \bibitem{lorensen1987marching}
 W.~E. Lorensen, H.~E. Cline, \href{https://doi.org/10.1145/37402.37422}{Marching cubes: A high resolution 3d surface construction algorithm}, SIGGRAPH Comput. Graph. 21~(4) (1987) 163--169.
@@ -46,9 +61,6 @@ W.~E. Lorensen, H.~E. Cline, \href{https://doi.org/10.1145/37402.37422}{Marching
 M.~Garland, P.~S. Heckbert, \href{https://doi.org/10.1145/258734.258849}{Surface simplification using quadric error metrics}, in: Proceedings of the 24th Annual Conference on Computer Graphics and Interactive Techniques, SIGGRAPH '97, ACM Press/Addison-Wesley Publishing Co., USA, 1997, pp. 209--216.
 \newblock \href {https://doi.org/10.1145/258734.258849} {\path{doi:10.1145/258734.258849}}.
 \newline\urlprefix\url{https://doi.org/10.1145/258734.258849}
-
-\bibitem{blender2023objectops}
-{Blender Foundation}, {Blender Python API: Object Operators}, \url{https://docs.blender.org/api/current/bpy.ops.object.html\#bpy.ops.object.origin\_set} (2023).
 
 \bibitem{jocher2023yolo}
 G.~Jocher, A.~Chaurasia, J.~Qiu, \href{https://github.com/ultralytics/ultralytics}{{Ultralytics YOLO}} (Jan. 2023).

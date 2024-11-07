@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.3)  24 OCT 2024 23:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.3)  6 NOV 2024 05:01
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -219,23 +219,32 @@ Package: chemgreek 2020/01/16 v1.1a interface for upright Greek letters for use 
 ) (/usr/local/texlive/2023/texmf-dist/tex/latex/cleveref/cleveref.sty
 Package: cleveref 2018/03/27 v0.21.4 Intelligent cross-referencing
 Package cleveref Info: `amsthm' support loaded on input line 3026.
-) (./elsarticle-template-num.aux)
+) (/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/pifont.sty
+Package: pifont 2020/03/25 PSNFSS-v9.3 Pi font support (SPQR) 
+LaTeX Font Info:    Trying to load font information for U+pzd on input line 63.
+ (/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/upzd.fd
+File: upzd.fd 2001/06/04 font definitions for U/pzd.
+)
+LaTeX Font Info:    Trying to load font information for U+psy on input line 64.
+ (/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/upsy.fd
+File: upsy.fd 2001/06/04 font definitions for U/psy.
+)) (./elsarticle-template-num.aux)
 \openout1 = `elsarticle-template-num.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
  (/usr/local/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count288
@@ -256,23 +265,23 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 
-Package chemgreek Info: Activating mapping `default' on line 66.
+Package chemgreek Info: Activating mapping `default' on line 69.
 
 <./figures/pdf/synthesis-workflow.pdf, id=1, 805.0075pt x 92.345pt>
 File: ./figures/pdf/synthesis-workflow.pdf Graphic file (type pdf)
 <use ./figures/pdf/synthesis-workflow.pdf>
-Package pdftex.def Info: ./figures/pdf/synthesis-workflow.pdf  used on input line 146.
+Package pdftex.def Info: ./figures/pdf/synthesis-workflow.pdf  used on input line 150.
 (pdftex.def)             Requested size: 390.0pt x 44.73795pt.
  [1
 
 {/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./figures/pdf/synthesis-workflow.pdf>] [2
 
 {/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 167.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 169.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 167.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 169.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
@@ -283,84 +292,63 @@ Overfull \hbox (2.61108pt too wide) has occurred while \output is active
 [1
 
 
-] [2]
-<figures/pdf/synthesis-workflow.pdf, id=32, 805.0075pt x 92.345pt>
+]
+<figures/pdf/synthesis-workflow.pdf, id=29, 805.0075pt x 92.345pt>
 File: figures/pdf/synthesis-workflow.pdf Graphic file (type pdf)
 <use figures/pdf/synthesis-workflow.pdf>
-Package pdftex.def Info: figures/pdf/synthesis-workflow.pdf  used on input line 225.
+Package pdftex.def Info: figures/pdf/synthesis-workflow.pdf  used on input line 234.
 (pdftex.def)             Requested size: 390.0pt x 44.73795pt.
- [3 <./figures/pdf/synthesis-workflow.pdf>]
-<figures/pdf/particle-extraction.pdf, id=45, 1526.70375pt x 656.4525pt>
-File: figures/pdf/particle-extraction.pdf Graphic file (type pdf)
-<use figures/pdf/particle-extraction.pdf>
-Package pdftex.def Info: figures/pdf/particle-extraction.pdf  used on input line 252.
-(pdftex.def)             Requested size: 390.0pt x 167.68866pt.
- [4 <./figures/pdf/particle-extraction.pdf>]
-<figures/pdf/simulation-pipeline.pdf, id=67, 888.31876pt x 323.2075pt>
+ [2 <./figures/pdf/synthesis-workflow.pdf>]
+<figures/pdf/simulation-pipeline.pdf, id=42, 762.85pt x 277.035pt>
 File: figures/pdf/simulation-pipeline.pdf Graphic file (type pdf)
 <use figures/pdf/simulation-pipeline.pdf>
-Package pdftex.def Info: figures/pdf/simulation-pipeline.pdf  used on input line 399.
-(pdftex.def)             Requested size: 390.0pt x 141.8961pt.
- [5 <./figures/pdf/simulation-pipeline.pdf>] [6] [7] [8] [9]
-<figures/pdf/postprocess.pdf, id=103, 1321.93875pt x 319.1925pt>
+Package pdftex.def Info: figures/pdf/simulation-pipeline.pdf  used on input line 353.
+(pdftex.def)             Requested size: 390.0pt x 141.62837pt.
+ [3] [4 <./figures/pdf/simulation-pipeline.pdf>]
+<figures/pdf/postprocess.pdf, id=62, 1321.93875pt x 319.1925pt>
 File: figures/pdf/postprocess.pdf Graphic file (type pdf)
 <use figures/pdf/postprocess.pdf>
-Package pdftex.def Info: figures/pdf/postprocess.pdf  used on input line 558.
+Package pdftex.def Info: figures/pdf/postprocess.pdf  used on input line 501.
 (pdftex.def)             Requested size: 390.0pt x 94.16583pt.
- [10 <./figures/pdf/postprocess.pdf>]
+ [5]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 599.
+               Default added (so using `tbp') on input line 532.
 
-[11]
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 626.
-
-[12] [13] (./elsarticle-template-num.bbl
-Overfull \hbox (75.2845pt too wide) in paragraph at lines 9--12
-\OT1/cmr/m/n/12 URL \OT1/cmtt/m/n/12 https://www.sciencedirect.com/science/article/pii/S003707389900127X 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 28--29
+[6 <./figures/pdf/postprocess.pdf>] [7] [8] (./elsarticle-template-num.bbl
+Underfull \hbox (badness 10000) in paragraph at lines 32--33
 []\OT1/cmr/m/n/12 NVIDIA Cor-po-ra-tion, NVIDIA PhysX,
  []
 
-
-Underfull \hbox (badness 1275) in paragraph at lines 37--39
-\OT1/cmr/m/n/12 ter-na-tional Jour-nal of Com-puter Vi-sion 126 (9) (2018) 902--919.
+[9]
+Underfull \hbox (badness 1496) in paragraph at lines 46--49
+\OT1/cmr/m/n/12 of con-struc-tion work-ers, Au-toma-tion in Con-struc-tion 155 (2023)
  []
 
-[14]
-Underfull \hbox (badness 1418) in paragraph at lines 46--49
+
+Overfull \hbox (75.2845pt too wide) in paragraph at lines 46--49
+\OT1/cmr/m/n/12 URL \OT1/cmtt/m/n/12 https://www.sciencedirect.com/science/article/pii/S0926580523003205 
+ []
+
+
+Underfull \hbox (badness 1418) in paragraph at lines 61--64
 \OT1/cmr/m/n/12 Com-puter Graph-ics and In-ter-ac-tive Tech-niques, SIG-GRAPH '97,
  []
 
-
-Underfull \hbox (badness 6808) in paragraph at lines 51--52
-[]\OT1/cmr/m/n/12 Blender Foun-da-tion, Blender Python API: Ob-ject Op-er-a-tors,
- []
-
-
-Overfull \hbox (138.77377pt too wide) in paragraph at lines 51--52
-\OT1/cmtt/m/n/12 https://docs.blender.org/api/current/bpy.ops.object.html#bpy.ops.object.origin[]set
- []
-
-) [15] (./elsarticle-template-num.aux) ) 
+[10]) [11] (./elsarticle-template-num.aux) ) 
 Here is how much of TeX's memory you used:
- 6660 strings out of 476025
- 121191 string characters out of 5790018
- 1864388 words of memory out of 5000000
- 27050 multiletter control sequences out of 15000+600000
- 520785 words of font info for 65 fonts, out of 8000000 for 9000
+ 6706 strings out of 476025
+ 122148 string characters out of 5790018
+ 1861388 words of memory out of 5000000
+ 27085 multiletter control sequences out of 15000+600000
+ 521475 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 72i,14n,76p,693b,342s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on elsarticle-template-num.pdf (17 pages, 1907038 bytes).
+ 72i,11n,76p,858b,342s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/zapfding/uzdr.pfb>
+Output written on elsarticle-template-num.pdf (13 pages, 1420130 bytes).
 PDF statistics:
- 205 PDF objects out of 1000 (max. 8388607)
- 115 compressed objects within 2 object streams
+ 153 PDF objects out of 1000 (max. 8388607)
+ 88 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
