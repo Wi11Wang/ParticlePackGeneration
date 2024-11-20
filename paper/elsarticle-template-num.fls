@@ -414,6 +414,11 @@ INPUT ./figures/pdf/synthesis-workflow.pdf
 INPUT figures/pdf/synthesis-workflow.pdf
 INPUT ./figures/pdf/synthesis-workflow.pdf
 INPUT ./figures/pdf/synthesis-workflow.pdf
+INPUT ./figures/img/mesh-acquisition.png
+INPUT ./figures/img/mesh-acquisition.png
+INPUT figures/img/mesh-acquisition.png
+INPUT ./figures/img/mesh-acquisition.png
+INPUT ./figures/img/mesh-acquisition.png
 INPUT ./figures/pdf/simulation-pipeline.pdf
 INPUT ./figures/pdf/simulation-pipeline.pdf
 INPUT figures/pdf/simulation-pipeline.pdf

@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex elsarticle-template-num"] 1730839947 "elsarticle-template-num.aux" "elsarticle-template-num.bbl" "elsarticle-template-num" 1730840464 0
+["bibtex elsarticle-template-num"] 1732068531 "elsarticle-template-num.aux" "elsarticle-template-num.bbl" "elsarticle-template-num" 1732068926 0
   "./cas-refs.bib" 1730839379 14076 6c51f6e02e81b5411d1417f138969005 ""
   "./elsarticle-num.bst" 1720575688 29462 43db4fe246825ec69ed81b2463c17f04 ""
-  "elsarticle-template-num.aux" 1730840463 5334 e5f88f773b6583b13244017d2db3e005 "pdflatex"
+  "elsarticle-template-num.aux" 1732068926 4758 60d01629fd81c8dfdb377fcff6eca7ca "pdflatex"
   (generated)
   "elsarticle-template-num.bbl"
   "elsarticle-template-num.blg"
   (rewritten before read)
-["pdflatex"] 1730840463 "/Users/bogong/Developer/honours/ParticlePackGeneration/paper/elsarticle-template-num.tex" "elsarticle-template-num.pdf" "elsarticle-template-num" 1730840464 0
-  "/Users/bogong/Developer/honours/ParticlePackGeneration/paper/elsarticle-template-num.tex" 1730840463 49443 9fbd18d681d218b7262029350587f736 ""
+["pdflatex"] 1732068926 "/Users/bogong/Developer/honours/ParticlePackGeneration/paper/elsarticle-template-num.tex" "elsarticle-template-num.pdf" "elsarticle-template-num" 1732068926 0
+  "/Users/bogong/Developer/honours/ParticlePackGeneration/paper/elsarticle-template-num.tex" 1732068926 52121 b2e8b9ca962a93f9fa6fdfa2538086ec ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/adobe/symbol/psyr.tfm" 1136768653 1408 5937f58aa508ea2cea4901c07d10f5fe ""
@@ -89,11 +89,12 @@
   "/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1704289267 4623355 b8cad38412faebe1ce5b780a45db67bd ""
   "/usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1704289221 7883457 9767c742d88a98284357434a079bdbce ""
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
-  "elsarticle-template-num.aux" 1730840463 5334 e5f88f773b6583b13244017d2db3e005 "pdflatex"
-  "elsarticle-template-num.bbl" 1730839947 6247 d358fad6473a2c0976289337dad26d60 "bibtex elsarticle-template-num"
-  "elsarticle-template-num.spl" 1730840463 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "elsarticle-template-num.tex" 1730840463 49443 9fbd18d681d218b7262029350587f736 ""
+  "elsarticle-template-num.aux" 1732068926 4758 60d01629fd81c8dfdb377fcff6eca7ca "pdflatex"
+  "elsarticle-template-num.bbl" 1732068531 4588 9d71b9613e5f150de54f296368288c60 "bibtex elsarticle-template-num"
+  "elsarticle-template-num.spl" 1732068926 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "elsarticle-template-num.tex" 1732068926 52121 b2e8b9ca962a93f9fa6fdfa2538086ec ""
   "elsarticle.cls" 1720575688 44541 9d3456c17502e6602b2ecf2b8f0736e0 ""
+  "figures/img/mesh-acquisition.png" 1732067721 373467 1de41f1c971dc068d51478ab46ed093c ""
   "figures/pdf/postprocess.pdf" 1717043357 535223 0316c012e148ef1ca763400832c23a7a ""
   "figures/pdf/simulation-pipeline.pdf" 1730827941 687123 6ebcbfa36cbe07e306739c83ffdb5f93 ""
   "figures/pdf/synthesis-workflow.pdf" 1730827447 16508 a1ef3802aa1fa50742dcc2598671d30d ""

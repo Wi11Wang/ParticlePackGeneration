@@ -96,7 +96,7 @@
 %% \fntext[label3]{}
 
 % \title{Particle Pack Generation: Synthesise Tomograms with Physics-Based Simulation}
-\title{Synthetic Data Generation for Augmentation and Testing in Geological Tomographic Segmentation}
+\title{Synthetic Particle Pack Generation for Augmentation and Testing in Geological Tomographic Segmentation}
 
 %% use optional labels to link authors explicitly to addresses:
 %% \author[label1,label2]{}
@@ -141,7 +141,7 @@ However, obtaining such tomograms with the corresponding segmentation labels rem
 % Current methods are constrained by the need for extensive manual inspection and correction, as the initial segmentation is often inaccurate.
 This study introduces a novel physics-based simulation workflow that generates synthetic tomograms with segmentation ground truths. 
 % By simulating the physical particle packing process, we produce enriched datasets that improve segmentation accuracy. 
-The synthetic dataset enhances existing resources in the field, providing support for data augmentation and testing for geological tomographic segmentation.
+The synthetic dataset generation tool produces realistic particle pack tomograms in large quantities, supporting data augmentation and serving as a benchmark for geological tomographic segmentation testing.
 \end{abstract}
 
 %%Graphical abstract
@@ -175,36 +175,60 @@ Computed Tomography \sep Synthetic Data Generation
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction} \label{sec:introduction}
-In the field of geology, the use of computed tomography (CT) to scan geological particle samples has become increasingly common \cite{VANGEET200025, cnudde20123d, warlo2021multi}.
+
+% 1. context & motivation: define particle packs, what to learn from particle packs, how ct help us learn from particle packs
+% 2. problem: analysis requires segmentation & identification of each particle -> difficult, requires manual correction also nearly impossible, some groups may not have access to CT data (groups developing segmentation algorithm). bottle neck in analysis pipeline
+% 3. what others have done to solve the problem, focus on the advantages and disadvantages, how manual correction works, diffrent segmentationa algorithm (other fields)
+% 4. what we propose to solve the problem, mention how we addressing others disadvantages (shortly summarise our method and )
+% 5. outline this paper
+
+% think about what should we add to discussion section
+
+% why it's more common, expand citations
+% a bit more context: 
+In the field of geology, the use of computed tomography (CT) to scan geological particle samples has become increasingly common, such as reservoir rocks \cite{VANGEET200025}, sandstones \cite{cnudde20123d} and ores \cite{warlo2021multi}.
 CT scanning offers the significant advantage of providing 3D non-destructive inspection of large batches of particle samples, often referred to as particle packs.
 However, to perform comprehensive analyses of these particle packs, it is essential to accurately segment individual particles. 
 This segmentation is crucial for examining specific attributes such as composition and physical properties.
+In addition, obtaining such segmentation is often the bottleneck in tomographic analysis pipeline.
 
+With the growing utilisation of machine-learning based segmentation algorithms, the demand for comprehensive datasets has significantly increased. 
+A key challenge in this context is the acquisition of CT volumes along with their precise segmentation ground truths. 
+However, obtaining tomograms requires complex processes, highly skilled technicians, and sophisticated equipment. % which are not only expensive to operate but also resource-intensive. 
+Moreover, research groups focused on developing segmentation algorithms, may lack access to such CT datasets. 
 % As the utilisation of machine learning expands, there is an increasing demand for comprehensive datasets.
-% Due to the difficulities in obtain both tomogram and their segmentation result.
-A significant challenge in this context is acquiring CT volumes or tomograms and the precise segmentation ground truth.
-Obtaining tomograms involves complex processes, specialised technicians and sophisticated equipment, which is both costly to run and resource-intensive. 
-Additionally, achieving accurate segmentation with current methods, such as the watershed algorithm, often requires laborious manual corrections.
+% Due to the difficulties in obtain both tomogram and their segmentation result.
 
-In this work, we introduce a novel approach using a physics-based simulation engine to generate 3D particle pack tomograms alongside their segmentation ground truths. 
-This method serves as an effective tool  for augmenting tomographic segmentation datasets and validating segmentation algorithms.
+Synthetic data has been extensively utilised for decades to enhance existing datasets and evaluate the performance of computer vision algorithms, including segmentation \citep{richter2016playingdatagroundtruth}. 
+This involves generating data that closely resemble real samples in structure, distribution, and essential characteristics, but are computationally produced.
+Simulation-based methods are widely employed for this purpose \citep{demelo2022nextgeneration}, leveraging computational models such as physics simulators or scene rendering engines to create synthetic data tailored to specific domains. 
+These methods aim to replicate real-world scenarios or physical phenomena by constructing virtual environments that mimic real-world dynamics with high fidelity.
+Nevertheless, there is a lack of research on synthesising particle pack tomograms and their corresponding segmentations.
+
+% Synthetic data has been used for more than decades to enrich existing datasets and benchmark the performance of computer vision algorithms, including segmentation \citep{richter2016playingdatagroundtruth}.
+% This process involves creating data that resemble actual samples in terms of structure, distribution, and key characteristics, yet they are synthetic and generated through computational methods.
+% Simulation-based methods are commonly used in synthetic data generation \citep{demelo2022nextgeneration}.
+% These methods employ computational models such as physics simulators or scene rendering engines to generate synthetic data that mimic real-world scenarios or phenomena for custom domains. 
+% The core idea is to create a virtual environment that replicates physical dynamics or real-world scenes accurately.
+% Common tools include physical simulation engines such as Bullet Engine \citep{coumans2021pybullet} and PhysX \citep{nvidia2024nvidia} that are commonly used for their physics modeling capabilities such as rigid body simulation \citep{greff2022kubricscalabledatasetgenerator}. 
+% Additionally, game engines like Unity \citep{unity2024unity} and Unreal Engine \citep{unreal2024epic} are also frequently utilised, offering rendering capabilities to simulate realistic scenes or environments \citep{LEE2023105060, borkman2021unityperceptiongeneratesynthetic}.
+
+In this work, we present a novel physics-simulation based workflow for generating 3D particle pack tomograms along with their corresponding segmentation ground truths. 
+This approach provides a effective tool for augmenting tomographic segmentation datasets to enhance the training of machine learning-based segmentation models.
+Furthermore, the synthesised dataset serves as a reliable benchmark for evaluating and validating segmentation algorithms.
 % This method generates synthetic particle pack data, enriching the available particle pack datasets in various fields.
 % Additionally, we will test the performance increase of 2D particle pack segmentation.
 
+In this paper, we begin by introducing the workflow developed for synthesising particle pack datasets.
+Next, we present experiments demonstrating how these datasets can augment segmentation model training, enhancing model performance.
+Finally, we discuss the implications of our findings, highlighting their potential to improve segmentation accuracy and streamline processes in relevant applications.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Background}
-Synthetic data has been used for more than decades to enrich existing datasets and benchmark the performance of computer vision algorithms, including segmentation \citep{richter2016playingdatagroundtruth}.
-This process involves creating data that resemble actual samples in terms of structure, distribution, and key characteristics, yet they are synthetic and generated through computational methods.
-
-Simulation-based methods are commonly used in synthetic data generation \citep{demelo2022nextgeneration}.
-These methods employ computational models such as physics simulators or scene rendering engines to generate synthetic data that mimic real-world scenarios or phenomena for custom domains. 
-The core idea is to create a virtual environment that replicates physical dynamics or real-world scenes accurately.
-% commonly used simulation based tools
-Common tools include physical simulation engines such as Bullet Engine \citep{coumans2021pybullet} and PhysX \citep{nvidia2024nvidia} that are commonly used for their physics modeling capabilities such as rigid body simulation \citep{greff2022kubricscalabledatasetgenerator}. 
-Additionally, game engines like Unity \citep{unity2024unity} and Unreal Engine \citep{unreal2024epic} are also frequently utilised, offering rendering capabilities to simulate realistic scenes or environments \citep{LEE2023105060, borkman2021unityperceptiongeneratesynthetic}.
+% \section{Background}
+% talk in detail about literature review
+% required theory to understand this paper
 % successfully deployed tasks
 % \par
 % These simulation-based approaches have shown considerable success in various applications. 
@@ -235,13 +259,13 @@ Additionally, game engines like Unity \citep{unity2024unity} and Unreal Engine \
     \caption{Particle Pack Synthesis Workflow}
     \label{fig:workflow}
 \end{figure}
-To illustrate our proposed workflow for generating synthetic particle packs (see \Cref{fig:workflow}), we designed a process that closely replicates the physical steps involved in preparing particles for CT scanning. This workflow encompasses four key stages:
+To illustrate our proposed workflow for generating synthetic particle packs (depicted in \Cref{fig:workflow}), we designed a process that closely replicates the physical steps involved in preparing particles for CT scanning. This workflow encompasses four key stages:
 \par
 \begin{enumerate}
-    \item Mesh Acquisition: Extract particles from a CT-scanned particle pack volume and convert them into meshes.
-    \item Physical Simulation: Conduct rigid body simulations on the particle meshes using a physics simulator to obtain their rotations and positions in the simulated tomogram.
-    \item Synthetic Tomogram Creation: Create a synthetic particle pack tomogram and its 3D mask by combining the original particle volumes, masks, and simulation results.
-    \item Post-Processing: Introduce modifications, such as noise, to make the synthetic tomograms and masks realistic proxies for real-world data.
+    \item Mesh Acquisition%: Extract particles from a CT-scanned particle pack volume and convert them into meshes.
+    \item Physical Simulation%: Conduct rigid body simulations on the particle meshes using a physics simulator to obtain their rotations and positions in the simulated tomogram.
+    \item Synthetic Tomogram Creation%: Create a synthetic particle pack tomogram and its 3D mask by combining the original particle volumes, masks, and simulation results.
+    \item Post-Processing%: Introduce modifications, such as noise, to make the synthetic tomograms and masks realistic proxies for real-world data.
 \end{enumerate}
 % The process commences with the acquisition of a real particle pack volume (from a CT scan) and the corresponding labelled volume.
 % so that these extracted particle volumes can be converted into meshes for simulation. 
@@ -255,10 +279,15 @@ To illustrate our proposed workflow for generating synthetic particle packs (see
 %===============================================================================
 \subsection{Mesh Acquisition}
 Mesh acquisition involves extracting each particle's volume from a tomogram and converting it into a mesh for rigid body simulations. 
-The process starts with a particle pack tomogram and its mask. 
+As illustrated in \Cref{fig:mesh_acquisition_workflow}, the process starts with a particle pack tomogram and its mask. 
 Using the mask, we isolate each particle's volume and label volume, then convert these into mesh format with marching cubes algorithm \citep{lorensen1987marching}.
 To optimise for simulations, particle meshes can be simplified using mesh decimation techniques \citep{garland1997surface}. 
-This would reducing vertex counts while remaining essential geometry and improve simulation efficiency.
+This reduces vertex counts while retaining essential geometry and improving simulation efficiency.
+\begin{figure}[h!]
+    \includegraphics[width=\textwidth]{figures/img/mesh-acquisition.png}
+    \caption{Mesh Acquisition Workflow}
+    \label{fig:mesh_acquisition_workflow}
+\end{figure}
 
 % \subsection{Particle Extraction} \label{sec:method:subsec:particle_extraction}
 % Particle extraction is the process of extracting a volume encompassing each particle from the tomogram and its mask.
@@ -343,12 +372,13 @@ This would reducing vertex counts while remaining essential geometry and improve
 
 %===============================================================================
 \subsection{Physical Simulation}
-The real particle packing process begins with sieving to separate particles by size. 
+The physical particle packing process begins with sieving to separate particles by size. 
 Selected particles are then placed into a container to form a particle pack, ready for CT scanning.
 % Using the particle meshes from the previous step, physics-based simulator can be applied to simulate the particle packing process before the CT scan. 
 % The real particle packing process firstly involves sifting to filter particles with different sizes, then placing a number of geological particles into a container to form particle pack for CT scan.
 Our goal in the physical simulation is to replicate this process.
-This is achieved by inputting particle meshes with specific size then using simulator to mimic the simulation process, lastly obtain the placement (location and rotation) of each particle in the simulated particle pack.
+This is achieved by inputting particle meshes with specific size then using simulator to mimic the particle placement process, i.e., pouring particles into a container. 
+Lastly obtain the placement (location and rotation) of each particle in the simulated particle pack.
 \begin{figure}[H]
     \includegraphics[width=\textwidth]{figures/pdf/simulation-pipeline.pdf}
     \caption{Pipeline of Batched Rigid Body Simulation}
@@ -375,26 +405,23 @@ The batched rigid body simulation pipeline includes four steps (illustrated in \
 % Unlike soft body simulations, which are better suited for scenarios involving material deformation or bending, rigid body simulation is optimal for processes where particles maintain their shape, as it avoids the unnecessary computational costs associated with modelling deformations. 
 % Additionally, while particle simulations might simplify particles to point masses \footnote{A point mass is an object of negligible size, treated as if all its mass is concentrated at a single point in space for the purposes of modelling.} by ignoring the geometry of particle to make the simulation more efficient and scalable, rigid body simulation takes into account the geometric details of each particle. 
 % This enables a more precise representation of packing, collisions, and stacking behaviours critical to the process, making rigid body simulation a more efficient and realistic method for simulating particle pack processes.
-\subsubsection{Choice of Simulator}
+% \subsubsection{Choice of Simulator}
 % Blender was selected to perform batched rigid body simulation, driven by the need for a tool that offered a graphical user interface (GUI) for visualisation, a scripting interface for automation, and was relatively efficient.
 % \par
 % Compared to PyBullet, Blender's GUI enables visualisation of simulations, facilitating a more intuitive interaction with the simulation environment.
 % In our study, Python served as the primary programming environment for the broader project, using Python ensuring a consistent and unified programming interface.
 % Unity 3D and Unreal Engine, with their comprehensive suites of development tools and GUIs, are ideal for projects that require advanced visualisation and interactive simulation capabilities, though with some trade-offs in scripting flexibility and open-source accessibility. 
 % PhysX, known for its high-performance via GPU acceleration in various simulations, is best suited for projects that require high efficiency, but its platform dependency can potentially hinder cross-platform compatibility. 
-After evaluating multiple options, including Unity 3D \citep{unity2024unity}, Unreal Engine \citep{unreal2024epic}, and PhysX \citep{nvidia2024nvidia}, we chose Blender for conducting batched rigid body simulations. 
+
+After evaluating multiple options, including Unity 3D \citep{unity2024unity}, Unreal Engine \citep{unreal2024epic}, and PhysX \citep{nvidia2024nvidia}, we chose Blender \citep{blender2023objectops} for conducting batched rigid body simulations. 
 Blender stood out due to its accessible graphical user interface (GUI), which facilitated the visual inspection of packed particle formations. 
 This helped us verify whether the simulation accurately represents the desired physical characteristics.
 Additionally, Blender's scripting interface allowed seamless integration into a Python-driven pipeline, ensuring that the project maintained a consistent and adaptable programming environment.
-\subsubsection{Implementation Detail} \label{subsubsec:syn:simu:imp_detail}
+% \subsubsection{Implementation Detail} \label{subsubsec:syn:simu:imp_detail}
+
 In simulation of the particle packing processes, specific settings and procedures are crucial to achieving accurate and reproducible results. 
-This part provides an overview of the implementation specifics used in our simulations.
+The implementation specifics used in our simulations include:
 \begin{itemize}
-    % \item 
-    % The gravitational center plays a pivotal role in our simulation. 
-    % It is established at the center of the mesh, determined by calculating the object's surface area \citep{blender2023objectops}. 
-    % This configuration ensures that gravitational effects are realistically simulated, mirroring the natural behavior of particles under the influence of gravity. 
-    % For ease of reconstruction after exporting the simulation results, the center of the object is repositioned to align with the center of the original bounding box.
     \item
     Particle weights affects collision between particles and container in our particle packing simulation. 
     In our implementation, we assume each particle has a uniformity and even quality. 
@@ -417,11 +444,14 @@ This part provides an overview of the implementation specifics used in our simul
 \end{itemize}
 %===============================================================================
 \subsection{Synthetic Tomogram Creation}
-Based on the simulation results and particle volumes, the synthetic particle pack can be created. The synthetic tomogram creation involves three steps:
+Based on the simulation results and particle volumes, the synthetic particle pack can be created. 
+We have a list of particle positions and orientations (rotations) from step 3.2.
+We also have the volumetric data of each partcile from step 3.1. 
+Given this, the synthetic tomogram creation is straightforward and involves three steps:
 \begin{enumerate}
     \item Creating the target simulation container
     \item Rotating each particle volume according to the simulation results
-    \item Placing each rotated particle volume in the container based on the simulation results
+    \item Placing each rotated particle volume in the simulation container based on the physics simulation results form 3.2
 \end{enumerate}
 % The construction process involves initially gathering volumetric data from the particles' tomograms and masks, alongside the simulation outcomes from batched rigid body simulations. 
 % Subsequently, arrays that represents the reconstructed tomogram and its mask are generated. 
@@ -489,13 +519,13 @@ Based on the simulation results and particle volumes, the synthetic particle pac
 Post-processing plays a crucial role in bridging the gap between synthetic and real-world data, enhancing the realism of synthetic tomograms. 
 % As real tomograms are rarely perfect, they often contain defects resulting from equipment limitations, photon scarcity, or environmental interference. 
 % One fundamental post-processing step is the addition of noise. 
-In our implementation, Gaussian noise are commonly added to replicate these real-world imperfections, thereby produce a more realistic synthetic data.
+In our implementation, Gaussian noise is commonly added to replicate real-world imperfections, thereby producing a more realistic synthetic dataset.
 % Gaussian noise, speckle noise, and Poisson noise are commonly added to replicate these real-world imperfections, thereby produce a more realistic synthetic data.
 % Another aspect of realism is the presence of artefacts, which can also be deliberately introduced into synthetic tomograms. 
 Artefacts such as motion blur, ring effects, or beam hardening, which are common in tomographic imaging. 
-By simulating these artefacts, synthetic datasets can closely mimic the challenges faced when processing real-world data, providing an invaluable ground truth for developing algorithms robust to these artefacts.
+By simulating these artefacts, synthetic datasets can closely mimic the challenges faced when processing real-world data, providing an invaluable ground truth for developing algorithms that are robust to these artefacts.
 \par
-An example of the post-processed synthesised slice is shown in \cref{fig:syn:postprocess}. 
+An example of the post-processed synthesised slice is shown in \Cref{fig:syn:postprocess}. 
 After post-processing, the synthetic slice appears more realistic.
 \begin{figure}[H]
     \includegraphics[width=\textwidth]{figures/pdf/postprocess.pdf}
