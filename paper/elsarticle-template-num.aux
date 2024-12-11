@@ -9,18 +9,18 @@
 \newlabel{sec:introduction@cref}{{[section][1][]1}{[1][1][]1}}
 \citation{richter2016playingdatagroundtruth}
 \citation{demelo2022nextgeneration}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Particle Pack Synthesis Workflow}}{2}{}\protected@file@percent }
-\newlabel{fig:workflow}{{1}{2}}
-\newlabel{fig:workflow@cref}{{[figure][1][]1}{[1][2][]2}}
 \citation{lorensen1987marching}
 \citation{garland1997surface}
-\@writefile{toc}{\contentsline {section}{\numberline {2}Method}{3}{}\protected@file@percent }
-\newlabel{sec:method}{{2}{3}}
-\newlabel{sec:method@cref}{{[section][2][]2}{[1][2][]3}}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Method}{2}{}\protected@file@percent }
+\newlabel{sec:method}{{2}{2}}
+\newlabel{sec:method@cref}{{[section][2][]2}{[1][2][]2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Particle Pack Synthesis Workflow}}{3}{}\protected@file@percent }
+\newlabel{fig:workflow}{{1}{3}}
+\newlabel{fig:workflow@cref}{{[figure][1][]1}{[1][2][]3}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Mesh Acquisition}{3}{}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Mesh Acquisition Workflow}}{3}{}\protected@file@percent }
 \newlabel{fig:mesh_acquisition_workflow}{{2}{3}}
-\newlabel{fig:mesh_acquisition_workflow@cref}{{[figure][2][]2}{[1][3][]3}}
+\newlabel{fig:mesh_acquisition_workflow@cref}{{[figure][2][]2}{[1][2][]3}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Physical Simulation}{3}{}\protected@file@percent }
 \citation{unity2024unity}
 \citation{unreal2024epic}
@@ -31,28 +31,34 @@
 \newlabel{fig:batched_rigid_body_simulation_pipeline@cref}{{[figure][3][]3}{[1][3][]4}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Synthetic Tomogram Creation}{5}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Post-processing}{5}{}\protected@file@percent }
-\citation{jocher2023yolo}
-\citation{Dice1945MeasuresOT}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces An Example of Postprocessing Slice in Simulated Particle Pack Data}}{6}{}\protected@file@percent }
 \newlabel{fig:syn:postprocess}{{4}{6}}
 \newlabel{fig:syn:postprocess@cref}{{[figure][4][]4}{[1][5][]6}}
-\@writefile{toc}{\contentsline {section}{\numberline {3}Experiment \& Results}{6}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Experiment}{6}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Experiment Setup}{6}{}\protected@file@percent }
-\newlabel{eqn:dice}{{1}{6}}
-\newlabel{eqn:dice@cref}{{[equation][1][]1}{[1][6][]6}}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Segmentation performance between models trained on different datasets. Each row represents the training set, and each column represents the testing set (except for the ``Post-processing``'' column). The ``Post-processing'' column indicates whether the augmented dataset has been post-processed. Real Large refers to a real tomogram dataset with large particles, while Real Small refers to a real tomogram dataset with small particles. Rows include results from training on only the real datasets and combinations with synthetic data (Real Large + Syn, Real Small + Syn). Columns indicate testing on real datasets with large or small particles. }}{7}{}\protected@file@percent }
-\newlabel{tab:res1}{{1}{7}}
-\newlabel{tab:res1@cref}{{[table][1][]1}{[1][6][]7}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Result I: Postprocessing Is Crucial In Augmentation}{7}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Result II: Synthetic Data Improves Segmentation Accuracy}{7}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4}Analysis \& Discussion}{8}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5}Conclusion}{8}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces An Illustration of 2D Particle Pack Segmentation}}{6}{}\protected@file@percent }
+\newlabel{fig:syn:seg_target}{{5}{6}}
+\newlabel{fig:syn:seg_target@cref}{{[figure][5][]5}{[1][6][]6}}
+\citation{jocher2023yolo}
+\citation{Dice1945MeasuresOT}
+\newlabel{eqn:dice}{{1}{7}}
+\newlabel{eqn:dice@cref}{{[equation][1][]1}{[1][7][]7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Iron Ore Dataset}{7}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Segmentation performance between models trained on different datasets. Each row represents the training set, and each column represents the testing set (except for the ``Post-processing'' column). The ``Post-processing'' column indicates whether the augmented dataset has been post-processed. Real Large refers to a real tomogram dataset with large particles, while Real Small refers to a real tomogram dataset with small particles. Rows include results from training on only the real datasets and combinations with synthetic data (Real Large + Syn, Real Small + Syn). Columns indicate testing on real datasets with large or small particles. }}{8}{}\protected@file@percent }
+\newlabel{tab:res1}{{1}{8}}
+\newlabel{tab:res1@cref}{{[table][1][]1}{[1][8][]8}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Synthetic Iron Ore Dataset}{8}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Results \& Analysis}{8}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Result I: Postprocessing Is Crucial In Augmentation}{8}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Result II: Synthetic Data Improves Segmentation Accuracy}{9}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Discussion}{9}{}\protected@file@percent }
 \citation{sederberg1986free}
 \citation{ho2020denoising}
 \citation{goodfellow2014generativea}
 \bibstyle{elsarticle-num}
 \bibdata{cas-refs}
 \bibcite{VANGEET200025}{{1}{}{{}}{{}}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusion}{10}{}\protected@file@percent }
 \bibcite{cnudde20123d}{{2}{}{{}}{{}}}
 \bibcite{warlo2021multi}{{3}{}{{}}{{}}}
 \bibcite{richter2016playingdatagroundtruth}{{4}{}{{}}{{}}}
@@ -69,4 +75,4 @@
 \bibcite{ho2020denoising}{{15}{}{{}}{{}}}
 \bibcite{goodfellow2014generativea}{{16}{}{{}}{{}}}
 \providecommand\NAT@force@numbers{}\NAT@force@numbers
-\gdef \@abspage@last{13}
+\gdef \@abspage@last{14}

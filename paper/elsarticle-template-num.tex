@@ -26,6 +26,7 @@
 %%
 \documentclass[preprint,12pt]{elsarticle}
 
+\usepackage[dvipsnames]{xcolor}
 %% Use the option review to obtain double line spacing
 %% \documentclass[authoryear,preprint,review,12pt]{elsarticle}
 
@@ -58,6 +59,9 @@
 % \usepackage[linesnumbered, algochapter, ruled, longend]{algorithm2e}
 % \usepackage{cleveref}
 % \usepackage{tabularx}
+\usepackage{tikz}
+\usetikzlibrary{positioning,fit,backgrounds,arrows.meta, calc, patterns}
+
 
 %% The lineno packages adds line numbers. Start line numbering with
 %% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
@@ -95,7 +99,6 @@
 %%             country={}}
 %% \fntext[label3]{}
 
-% \title{Particle Pack Generation: Synthesise Tomograms with Physics-Based Simulation}
 \title{Synthetic Particle Pack Generation for Augmentation and Testing in Geological Tomographic Segmentation}
 
 %% use optional labels to link authors explicitly to addresses:
@@ -180,14 +183,14 @@ In the field of geology, the use of computed tomography (CT) to scan geological 
 CT scanning offers significant advantage of providing 3D non-destructive inspection of large batches of particle samples, often referred to as particle packs.
 However, to perform comprehensive analyses of these particle packs, it is essential to accurately segment individual particles. 
 This segmentation is crucial for examining specific attributes such as composition and physical properties.
-In addition, obtaining such segmentation is often the bottleneck in the tomographic analysis pipeline.
+However, obtaining such segmentation is often the bottleneck in the tomographic analysis pipeline.
 \par
-With the growing utilisation of machine-learning-based segmentation algorithms, the demand for comprehensive datasets has significantly increased. 
+With the growing utilisation of machine-learning-based segmentation algorithms, the demand for particle datasets has significantly increased. 
 A key challenge in this context is the acquisition of CT volumes along with their precise ground truth segmentations. 
 However, obtaining tomograms requires complex processes, highly skilled technicians, and sophisticated equipment. % which are not only expensive to operate but also resource-intensive. 
 Moreover, research groups focused on developing segmentation algorithms may lack access to such CT datasets. 
 \par
-Synthetic data has been extensively utilised for decades to enhance existing datasets and evaluate computer vision algorithms, including segmentation \citep{richter2016playingdatagroundtruth}. 
+Synthetic data have been extensively utilised for decades to enhance existing datasets and evaluate computer vision algorithms, providing segmentation ground truth for tasks like autonomous driving \citep{richter2016playingdatagroundtruth}. 
 This involves generating data that closely resembles real samples in structure, distribution, and essential characteristics, but are computationally produced.
 Simulation-based methods are widely employed for this purpose \citep{demelo2022nextgeneration}, leveraging computational models such as physics simulators or scene rendering engines to create synthetic data tailored to specific domains. 
 These methods aim to replicate real-world scenarios or physical phenomena by constructing virtual environments that mimic real-world dynamics with high fidelity.
@@ -199,7 +202,7 @@ Furthermore, the synthesised dataset serves as a reliable benchmark for evaluati
 \par
 In this paper, we begin by introducing the workflow developed for synthesising particle pack datasets.
 Next, we present experiments demonstrating how these datasets can augment segmentation model training, enhancing model performance.
-Finally, we discuss the implications of our findings, highlighting their potential to improve segmentation accuracy and ...(tbd, summarise ``discussion'' section).
+Finally, we discuss the implications of our findings, highlighting their potential to improve segmentation accuracy and evaluation ability.
 
 % \section{Background}
 % talk in detail about literature review
@@ -247,7 +250,7 @@ Using the mask, we isolate each particle's volume and label volume, then convert
 To optimise for simulations, particle meshes can be simplified using mesh decimation techniques \citep{garland1997surface}. 
 This reduces vertex counts while retaining essential geometry and improving simulation efficiency.
 \begin{figure}[h!]
-    \includegraphics[width=\textwidth]{figures/img/mesh-acquisition.png}
+    \includegraphics[width=\textwidth]{figures/pdf/mesh-acquisition.pdf}
     \caption{Mesh Acquisition Workflow}
     \label{fig:mesh_acquisition_workflow}
 \end{figure}
@@ -256,7 +259,7 @@ This reduces vertex counts while retaining essential geometry and improving simu
 The physical particle packing process begins with sieving to separate particles by size. 
 Selected particles are then placed into a container to form a particle pack, ready for CT scanning.
 Our goal in the physical simulation is to replicate this process.
-This is achieved by inputting particle meshes with specific size then using simulator to mimic the particle placement process, i.e., pouring particles into a container. 
+This is achieved by inputting particle meshes with specific size then using a simulator to mimic the particle placement process, i.e., pouring particles into a container. 
 Lastly obtain the placement (location and rotation) of each particle in the simulated particle pack.
 \begin{figure}[H]
     \includegraphics[width=\textwidth]{figures/pdf/simulation-pipeline.pdf}
@@ -284,7 +287,7 @@ The implementation specifics used in our simulations include:
     \item
     Particle weights affects collision between particles and container in our particle packing simulation. 
     In our implementation, we assume each particle has a uniformity and even quality. 
-    Then the mass of each particle is estimated based on particles' density and the size of the mask.
+    Then the mass of each particle is estimated based on particles' density and the size of the particle.
     This method provides a rapid approximation of weight, suitable for scenarios where detailed precision is less critical. 
     \item
     The initial positioning and scaling of particle meshes are highly dependent on the experimental needs. 
@@ -293,8 +296,8 @@ The implementation specifics used in our simulations include:
 %===============================================================================
 \subsection{Synthetic Tomogram Creation}
 Based on the simulation results and particle volumes, the synthetic particle pack can be created. 
-We have a list of particle positions and orientations (rotations) from step 3.2.
-We also have the volumetric data of each partcile from step 3.1. 
+From the output of the simulation (step 3.2), we have a list of particle positions and orientations (rotations).
+We also have the volumetric data of each particle from step 3.1. 
 Given this, the synthetic tomogram creation is straightforward and involves three steps:
 \begin{enumerate}
     \item Creating the target simulation container
@@ -305,7 +308,7 @@ Given this, the synthetic tomogram creation is straightforward and involves thre
 \subsection{Post-processing}
 Post-processing plays a crucial role in bridging the gap between synthetic and real-world data, enhancing the realism of synthetic tomograms. 
 In our implementation, Gaussian noise is commonly added to replicate real-world imperfections, thereby producing a more realistic synthetic dataset.
-Artefacts such as motion blur, ring effects, or beam hardening, which are common in tomographic imaging. 
+Other artefacts can also be included, such as motion blur, ring effects, or beam hardening, which are common in tomographic imaging. 
 By simulating these artefacts, synthetic datasets can closely mimic the challenges faced when processing real-world data, providing an invaluable ground truth for developing algorithms that are robust to these artefacts.
 \par
 An example of the post-processed synthesised slice is shown in \Cref{fig:syn:postprocess}. 
@@ -316,27 +319,95 @@ After post-processing, the synthetic slice appears more realistic.
     \label{fig:syn:postprocess}
 \end{figure}
 
-\section{Experiment \& Results}
+\section{Experiment}
 Having constructed synthetic particle packs as described in \Cref{sec:method}. 
-We conducted experiments to investigate the efficacy of using synthetic particle packs to augment existing training datasets for 2D particle segmentation.
-This will be exemplified by comparing the performance gap between models trained on raw and augmented datasets.
+We are therefore interested in investigating the efficacy of using synthetic particle packs to augment existing training datasets for particle pack segmentation.
+This will be exemplified by comparing the performance gap between models trained on the original and augmented datasets.
+% because we want to understand if using synthetic dataset can augment existing dataset therefore 
 %===============================================================================
 \subsection{Experiment Setup}
-In this experiment, the YOLOv8m-seg model from Ultralytics \citep{jocher2023yolo} will be employed due to its versatility across a wide range of applications as well as optimal balance between computational speed and segmentation accuracy.
-Lastly, we selected the Dice score \cite{Dice1945MeasuresOT}, also known as Dice-Sørensen coefficient (shown in \cref{eqn:dice}) to evaluate segmentation performance of trained models.
+% whats the task (2d seg): intro, task, target
+% why this task (2d seg): important as it's the cornerstone for subsequent analysis task 
+% what tool do you use to seg: yolov8 (intro)
+% why do you choose yolov8 (versatility)
+% what evaluation metric do you use?
+In this experiment, we investigate whether augmenting an existing dataset with synthetic data improves the performance of machine learning models trained for segmenting 2D particle packs. 
+The segmentation target is illustrated in \cref{fig:syn:seg_target}. Given a 2D slice from a particle pack tomogram, the model aims to identify the background and individual particles, labelling each one distinctly.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{figures/img/segmentation-intro.eps}
+    \caption{An Illustration of 2D Particle Pack Segmentation}
+    \label{fig:syn:seg_target}
+\end{figure}
+This experiment is motivated by two key factors: segmenting 2D particle packs is a challenging yet crucial task for subsequent analysis, and machine learning models for segmentation are increasingly prevalent but often face limitations due to a lack of high-quality training datasets.
 \par
-To effectively train and evaluate our model, we partitioned each tomogram into training and testing sets. 
+For segmentation, we utilise the YOLOv8 model developed by Ultralytics \citep{jocher2023yolo}.
+YOLOv8 is a convolutional neural network (CNN) designed for efficient object detection and segmentation.
+Specifically, the Yolov8m-seg variant is employed for this experiment for its versatility across diverse applications and its balance between computational efficiency and segmentation accuracy.
+\par
+To evaluate segmentation performance, we benchmark the number of correctly segmented pixels by comparing the model's output with the ground truth.
+Thus Dice score \cite{Dice1945MeasuresOT}, also known as Dice-Sørensen coefficient, is particularly suitable for this purpose and is defined in \cref{eqn:dice}.
+\begin{align}
+    \label{eqn:dice}
+    \text{Dice Score} = 2 \times \frac{\text{Area of Overlap}}{\text{Total Area}} 
+    = \frac{
+        2 \times \tikz[baseline=-.1cm]{
+        \begin{scope}
+            \fill[CarnationPink] (0,0) circle (0.5);
+            \fill[CornflowerBlue] (0.5,0) circle (0.5);
+            \clip (0,0) circle (0.5);
+            \fill[Orchid] (0.5,0) circle (0.5);
+            \fill[pattern=north east lines] (0.5,0) circle (0.5);
+          \end{scope}
+          \draw[line width=1pt, CarnationPink] (0,0) circle (0.5);
+          \draw[line width=1pt, CornflowerBlue] (0.5,0) circle (0.5);
+    }}
+    {
+        \tikz[baseline=-.1cm]{
+            \begin{scope}
+                \fill[CarnationPink] (0.0,0) circle (0.5);
+                \fill[pattern=north east lines] (0.0,0) circle (0.5);
+              \end{scope}
+              \draw[line width=1pt, CarnationPink] (0,0) circle (0.5);
+            }
+            +
+         \tikz[baseline=-.1cm]{
+            \begin{scope}
+                \fill[CornflowerBlue] (0.5,0) circle (0.5);
+                \fill[pattern=north east lines] (0.5,0) circle (0.5);
+              \end{scope}
+              \draw[line width=1pt, CornflowerBlue] (0.5,0) circle (0.5);
+            }
+    }
+\end{align}
+%===============================================================================
+\subsection{Iron Ore Dataset}
+In this experiment, the baseline dataset used for training machine learning models is an iron ore dataset.
+The dataset consists of a 3D tomogram, containing $x$ particles and $y$ slices, with each slice having dimensions of $2000 \times 2000$ pixels. (The values for $x$ and $y$ will be collected when I can access to Gadi.)
+\par
+To effectively train and evaluate our model, we partitioned the iron ore tomogram into training and testing sets. 
 We specifically avoided random selection of slices for the testing set due to the high similarity between consecutive slices within the particle pack. 
 This similarity can lead to overestimation of model performance, as the model might simply be recognising similar instances it has already encountered in adjacent slices, rather than generalising from diverse examples. 
 Therefore, we allocated the central 20\% of the particle pack slices to the testing set, and the remaining 80\% for training.
-This will avoid the similarity between training set and testing set. 
 \par
-As it effectively evaluating segmentation accuracy by accounting for both false positives and false negatives, providing a balanced view of under and over-segmentation.
-\begin{align}
-    \label{eqn:dice}
-    \text{Dice Score} = 2 \times \frac{\text{Area of Overlap}}{\text{Total Area}}
-\end{align}
+When utilising convolutional neural networks (CNNs) for segmentation, model performance can vary depending on the scale of objects. 
+Therefore, for both the training and testing datasets, each 2D particle is classified as either small or large based on the dataset's median particle size.
+%===============================================================================
+\subsection{Synthetic Iron Ore Dataset}
+The synthetic iron ore dataset was generated using our method, utilising the particles within the training set of the iron ore dataset described above. 
+Additionally, the creation of the synthetic iron ore dataset involves post-processing to enhance realism. 
+Gaussian noise is added to the synthetic tomogram to better mimic the characteristics of real-world data.
 \par
+The synthesised tomogram dataset contains $x$ particles and $y$ slices, with each slice having dimensions of $2000 \times 2000$ pixels. (The values for $x$ and $y$ will be collected when I can access to Gadi.) 
+% A demonstration of the synthetic iron ore dataset is presented in \Cref{fig:syn:syn_dataset_examples}.
+% \begin{figure}[]
+%     \centering
+%     \includegraphics[width=0.8\textwidth]{example-image-b}
+%     \caption{Randomly sampled images from Synthetic Iron Ore Dataset}
+%     \label{fig:syn:syn_dataset_examples}
+% \end{figure}
+%===============================================================================
+\section{Results \& Analysis}
 \begin{table}[]
     \center
     \begin{tabular}{|l|c|l|l|}
@@ -350,7 +421,7 @@ As it effectively evaluating segmentation accuracy by accounting for both false 
         Real Small + Syn       & \cmark & 94.8\%     & 90.9\%     \\ \hline
     \end{tabular}
     \caption{Segmentation performance between models trained on different datasets. 
-    Each row represents the training set, and each column represents the testing set (except for the ``Post-processing``'' column). 
+    Each row represents the training set, and each column represents the testing set (except for the ``Post-processing'' column). 
     The ``Post-processing'' column indicates whether the augmented dataset has been post-processed.
     Real Large refers to a real tomogram dataset with large particles, while Real Small refers to a real tomogram dataset with small particles. 
     Rows include results from training on only the real datasets and combinations with synthetic data (Real Large + Syn, Real Small + Syn). 
@@ -358,9 +429,7 @@ As it effectively evaluating segmentation accuracy by accounting for both false 
     }
     \label{tab:res1}
 \end{table}
-%===============================================================================
 \subsection{Result I: Postprocessing Is Crucial In Augmentation}
-In our experiment, the post-processing involved adding Gaussian noise to the synthetic data. 
 The observed results from \Cref{tab:res1} indicate that after post-processing, the training dataset was successfully augmented, leading to improvements in the models' performance across various test sets. 
 Conversely, without adding noise, the models' performance sometimes degraded (from 90.1\% to 88.8\%).
 \par
@@ -375,23 +444,43 @@ Specifically, when trained with real large particles augmented with synthetic da
 Similarly, training with real small particles combined with synthetic data improved the accuracy on large particles from 77.0\% to 80.1\%, while the improvement for small particles was more modest, rising from 90.1\% to 90.9\%. 
 These results indicate that synthetic data enriches the training set with diverse examples, thereby enhances the model's ability to segment tomograms with different particle sizes. 
 
-\section{Analysis \& Discussion}
-Ideas: 
-\begin{itemize}
-    \item Findings: how our work improves segmentation? Importance of postprocessing
-    \item Limitations: requires existing particle packs, computational complexity in simulation and tomogram creation?
-    \item Practical implications: how can we support for future research?
-    \item using it for testing: 1. size, 2. provide ground truth in large quantity (many ground truth)
-    % describe the experiment: experiment
-    % how much noise to add?
-    % mention add other artefacts
-    % list of things findings
-    % include some use cases / examples
-    % 1. create new dataset
-    % 2. extend existing
-    % 3. create dataset for testing / benchmarking
-    % Conclusion: do not include anything new in conclusion
-\end{itemize}
+\section{Discussion}
+The findings of this study underscore the potential of synthetic data augmentation in enhancing the segmentation accuracy of machine learning models applied to 2D particle pack datasets. 
+Notably, the results demonstrate significant improvements in Dice scores when synthetic datasets are incorporated into the model training process. 
+These improvements were particularly pronounced in the segmentation of large particles, suggesting that the augmented dataset effectively enriches the diversity of training examples, thereby enhancing the model's ability to generalise.
+\par
+Furthermore, we also demonstrated that post-processing techniques such as Gaussian noise plays a critical role of enhancing realism in synthetic datasets for model training. 
+Post-processing reduces the domain gap between synthetic and real-world data, enabling the model to learn more transferable features.
+\par
+Our method also demonstrate its potential in, firstly, offering an effective tool for augmenting tomographic segmentation datasets, enhancing model training through increased data diversity;
+Secondly, these datasets serve as a reliable resource for evaluating and validating segmentation models. 
+Unlike manually created ground truth data, which may contains artefacts in tomogram or incorrect labelling, the synthesised dataset can be generated without flaws. 
+This ensures greater accuracy and consistency, enabling robust model evaluation and validation.
+\par
+The current synthetic particle pack generation workflow is constrained by its reliance on manually labelled particle packs. 
+This limitation reduces the particles' versatility in the generated particle packs. 
+To eliminate this dependency and increase data diversity, we propose two improvement directions. 
+The first approach involves using methods such as free-form deformation (FFD) \cite{sederberg1986free} to alter particles' shape while retaining their core characteristics.
+This method is relatively fast, easy, and deterministic but still relies on the existing particle data.
+The second approach involves employing advanced machine-learning techniques, such as diffusion models \cite{ho2020denoising} or generative adversarial networks (GANs) \cite{goodfellow2014generativea}. 
+These models would first learn the features of the particle data and then generate entirely synthetic particle data. 
+
+% Ideas: 
+% \begin{itemize}
+%     \item Findings: how our work improves segmentation? Importance of postprocessing
+%     \item Limitations: requires existing particle packs, computational complexity in simulation and tomogram creation?
+%     \item Practical implications: how can we support for future research?
+%     \item using it for testing: 1. size, 2. provide ground truth in large quantity (many ground truth)
+%     % describe the experiment: experiment
+%     % how much noise to add?
+%     % mention add other artefacts
+%     % list of things findings
+%     % include some use cases / examples
+%     % 1. create new dataset
+%     % 2. extend existing
+%     % 3. create dataset for testing / benchmarking
+%     % Conclusion: do not include anything new in conclusion
+% \end{itemize}
 
 \section{Conclusion}
 This paper presents a comprehensive workflow for generating synthetic particle pack datasets through physics-based simulation. 
@@ -400,17 +489,16 @@ These tomogram-mask pairs can be used to augment existing segmentation datasets 
 The integration of noise and artefacts in post-processing further bridges the gap between synthetic and real-world data, offering a data generation platform for future research. 
 \par
 Our experimental results validate the effectiveness of our synthetic particle pack generation workflow. 
-By augmenting real datasets with synthetic data, we achieved consistent improvements in segmentation accuracy across different particle sizes, as demonstrated by higher Dice scores in \Cref{tab:res1}. 
-The integration of post-processing techniques, specifically the addition of noise, was crucial in bridging the gap between synthetic and real-world data, leading to enhanced model performance (\Cref{tab:res1}). 
+By augmenting real datasets with synthetic data, we achieved consistent improvements in segmentation accuracy across different particle sizes. 
+The integration of post-processing techniques, specifically the addition of noise, was crucial in bridging the gap between synthetic and real-world data, leading to enhanced model performance. 
 These findings highlight the potential of our approach to enrich annotated particle pack data for training and validation of segmentation algorithms.
-\par
-In the current synthetic particle-pack-generation workflow, we rely on manually labelled particle packs, which limits the versatility of the particle data. 
-To eliminate this dependency and increase data diversity, we propose two improvement directions. 
-The first approach involves using classical methods such as free-form deformation (FFD) \cite{sederberg1986free} to alter particles' shape while retaining their core characteristics. 
-This method is relatively fast, easy, and deterministic but still relies on the existing particle data.
-The second approach involves employing advanced machine-learning techniques, such as diffusion models \cite{ho2020denoising} or generative adversarial networks (GANs) \cite{goodfellow2014generativea}. 
-These models would first learn the features of the particle data and then generate entirely synthetic particle data. 
-
+% \par
+% In the current synthetic particle-pack-generation workflow, we rely on manually labelled particle packs, which limits the versatility of the particle data. 
+% To eliminate this dependency and increase data diversity, we propose two improvement directions. 
+% The first approach involves using classical methods such as free-form deformation (FFD) \cite{sederberg1986free} to alter particles' shape while retaining their core characteristics. 
+% This method is relatively fast, easy, and deterministic but still relies on the existing particle data.
+% The second approach involves employing advanced machine-learning techniques, such as diffusion models \cite{ho2020denoising} or generative adversarial networks (GANs) \cite{goodfellow2014generativea}. 
+% These models would first learn the features of the particle data and then generate entirely synthetic particle data. 
 %% The Appendices part is started with the command \appendix;
 %% appendix sections are then done as normal sections
 % \appendix
